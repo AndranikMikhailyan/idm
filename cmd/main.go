@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"idm/inner/database"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	db := database.ConnectDb()
+
+	exec := db.MustExec("select 1")
+	fmt.Println(exec.RowsAffected())
 }
